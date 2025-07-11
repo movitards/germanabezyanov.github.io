@@ -1,831 +1,176 @@
+<!-- index.html (приветственная страница) -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Urban Style - Магазин модной одежды</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            background-color: #f8f8f8;
-            color: #333;
-        }
-        
-        header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #222;
-        }
-        
-        .logo span {
-            color: #e74c3c;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 30px;
-        }
-        
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        nav ul li a:hover {
-            color: #e74c3c;
-        }
-        
-        .hero {
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            color: white;
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .hero-content {
-            width: 100%;
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: #e74c3c;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .btn:hover {
-            background-color: #c0392b;
-        }
-        
-        .categories {
-            padding: 50px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 32px;
-        }
-        
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .category-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .category-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .category-img {
-            height: 250px;
-            overflow: hidden;
-        }
-        
-        .category-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .category-card:hover .category-img img {
-            transform: scale(1.1);
-        }
-        
-        .category-info {
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .category-info h3 {
-            margin-bottom: 10px;
-            font-size: 22px;
-        }
-        
-        .category-info p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
-        footer {
-            background-color: #222;
-            color: white;
-            padding: 50px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            margin-bottom: 20px;
-            font-size: 18px;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: #bbb;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-column ul li a:hover {
-            color: white;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #bbb;
-        }
-        
-        /* Страница категории */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            padding: 50px 0;
-        }
-        
-        .product-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .product-img {
-            height: 300px;
-            overflow: hidden;
-        }
-        
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .product-info {
-            padding: 15px;
-        }
-        
-        .product-title {
-            font-size: 16px;
-            margin-bottom: 5px;
-        }
-        
-        .product-price {
-            font-weight: bold;
-            color: #e74c3c;
-            margin-bottom: 10px;
-        }
-        
-        .product-actions {
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .add-to-cart {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .add-to-cart:hover {
-            background-color: #c0392b;
-        }
-        
-        .wishlist {
-            background: none;
-            border: none;
-            font-size: 20px;
-            cursor: pointer;
-            color: #ccc;
-            transition: color 0.3s;
-        }
-        
-        .wishlist:hover {
-            color: #e74c3c;
-        }
-        
-        /* Контакты */
-        .contacts {
-            padding: 50px 0;
-        }
-        
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .contact-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .contact-card h3 {
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        
-        .contact-card p {
-            margin-bottom: 10px;
-            color: #666;
-        }
-        
-        .contact-form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        
-        .form-group textarea {
-            height: 150px;
-        }
-        
-        .submit-btn {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background-color: #c0392b;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Добро пожаловать</title>
+  <style>
+    body {
+      background-image: url('ChatGPT Image 11 июл. 2025 г., 22_01_20.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .welcome-box {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 40px;
+      border-radius: 10px;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #dddddd;
+    }
+  </style>
 </head>
 <body>
-    <!-- Главная страница -->
-    <div id="home-page">
-        <header>
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">Urban<span>Style</span></div>
-                    <nav>
-                        <ul>
-                            <li><a href="#home-page">Главная</a></li>
-                            <li><a href="#jeans-page">Джинсы</a></li>
-                            <li><a href="#t-shirts-page">Футболки</a></li>
-                            <li><a href="#shoes-page">Обувь</a></li>
-                            <li><a href="#contacts-page">Контакты</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        
-        <section class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Новая коллекция 2023</h1>
-                    <p>Откройте для себя последние тенденции моды этого сезона</p>
-                    <a href="#jeans-page" class="btn">Начать покупки</a>
-                </div>
-            </div>
-        </section>
-        
-        <section class="categories">
-            <div class="container">
-                <h2 class="section-title">Категории товаров</h2>
-                <div class="category-grid">
-                    <div class="category-card">
-                        <div class="category-img">
-                            <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Джинсы">
-                        </div>
-                        <div class="category-info">
-                            <h3>Джинсы</h3>
-                            <p>Стильные и удобные модели на любой вкус</p>
-                            <a href="#jeans-page" class="btn">Смотреть</a>
-                        </div>
-                    </div>
-                    
-                    <div class="category-card">
-                        <div class="category-img">
-                            <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Футболки">
-                        </div>
-                        <div class="category-info">
-                            <h3>Футболки</h3>
-                            <p>Яркие принты и качественные ткани</p>
-                            <a href="#t-shirts-page" class="btn">Смотреть</a>
-                        </div>
-                    </div>
-                    
-                    <div class="category-card">
-                        <div class="category-img">
-                            <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Обувь">
-                        </div>
-                        <div class="category-info">
-                            <h3>Обувь</h3>
-                            <p>Комфорт и стиль для каждого дня</p>
-                            <a href="#shoes-page" class="btn">Смотреть</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-column">
-                        <h3>Магазин</h3>
-                        <ul>
-                            <li><a href="#jeans-page">Джинсы</a></li>
-                            <li><a href="#t-shirts-page">Футболки</a></li>
-                            <li><a href="#shoes-page">Обувь</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Помощь</h3>
-                        <ul>
-                            <li><a href="#">Доставка и оплата</a></li>
-                            <li><a href="#">Возврат</a></li>
-                            <li><a href="#">Размеры</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h3>Контакты</h3>
-                        <ul>
-                            <li><a href="mailto:info@urbanstyle.com">info@urbanstyle.com</a></li>
-                            <li><a href="tel:+78001234567">8 (800) 123-45-67</a></li>
-                            <li><a href="#contacts-page">Обратная связь</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="copyright">
-                    &copy; 2023 Urban Style. Все права защищены.
-                </div>
-            </div>
-        </footer>
+  <div class="welcome-box">
+    <h1>Привет, я Герман Абезьянов</h1>
+    <p>Из группы 4116 и хочу вам представить свой сайт на тему планирования дел.</p>
+    <a href="main.html" class="btn">Перейти на сайт</a>
+  </div>
+</body>
+</html>
+
+
+<!-- main.html (основной сайт - органайзер) -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Органайзер дел</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.95);
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h1 {
+      text-align: center;
+    }
+    #taskInput, #deadlineInput {
+      padding: 10px;
+      margin: 5px;
+    }
+    #taskInput {
+      width: 50%;
+    }
+    #addTaskBtn {
+      padding: 10px 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: #fff;
+      padding: 10px;
+      margin: 5px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 5px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .task-left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .completed {
+      text-decoration: line-through;
+      color: grey;
+    }
+    button.delete, button.done {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin-left: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button.delete {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Планировщик дел</h1>
+    <div style="text-align:center;">
+      <input type="text" id="taskInput" placeholder="Введите задачу">
+      <input type="date" id="deadlineInput">
+      <button id="addTaskBtn">Добавить</button>
     </div>
-    
-    <!-- Страница джинсов -->
-    <div id="jeans-page" class="page" style="display:none;">
-        <header>
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">Urban<span>Style</span></div>
-                    <nav>
-                        <ul>
-                            <li><a href="#home-page">Главная</a></li>
-                            <li><a href="#jeans-page">Джинсы</a></li>
-                            <li><a href="#t-shirts-page">Футболки</a></li>
-                            <li><a href="#shoes-page">Обувь</a></li>
-                            <li><a href="#contacts-page">Контакты</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        
-        <div class="container">
-            <h2 class="section-title">Джинсы</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Джинсы 1">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Джинсы Slim Fit</h3>
-                        <div class="product-price">3 999 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1473966968600-fa801b869a1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Джинсы 2">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Джинсы Regular Fit</h3>
-                        <div class="product-price">4 299 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1475178626620-a4d074967452?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Джинсы 3">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Джинсы Boyfriend</h3>
-                        <div class="product-price">4 599 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Джинсы 4">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Джинсы Skinny</h3>
-                        <div class="product-price">3 799 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <footer>
-            <div class="container">
-                <div class="copyright">
-                    &copy; 2023 Urban Style. Все права защищены.
-                </div>
-            </div>
-        </footer>
-    </div>
-    
-    <!-- Страница футболок -->
-    <div id="t-shirts-page" class="page" style="display:none;">
-        <header>
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">Urban<span>Style</span></div>
-                    <nav>
-                        <ul>
-                            <li><a href="#home-page">Главная</a></li>
-                            <li><a href="#jeans-page">Джинсы</a></li>
-                            <li><a href="#t-shirts-page">Футболки</a></li>
-                            <li><a href="#shoes-page">Обувь</a></li>
-                            <li><a href="#contacts-page">Контакты</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        
-        <div class="container">
-            <h2 class="section-title">Футболки</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1527719327859-c6ce80353573?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Футболка 1">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Футболка с принтом</h3>
-                        <div class="product-price">1 499 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Футболка 2">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Футболка оверсайз</h3>
-                        <div class="product-price">1 799 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Футболка 3">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Футболка классическая</h3>
-                        <div class="product-price">1 299 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Футболка 4">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Футболка поло</h3>
-                        <div class="product-price">2 199 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <footer>
-            <div class="container">
-                <div class="copyright">
-                    &copy; 2023 Urban Style. Все права защищены.
-                </div>
-            </div>
-        </footer>
-    </div>
-    
-    <!-- Страница обуви -->
-    <div id="shoes-page" class="page" style="display:none;">
-        <header>
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">Urban<span>Style</span></div>
-                    <nav>
-                        <ul>
-                            <li><a href="#home-page">Главная</a></li>
-                            <li><a href="#jeans-page">Джинсы</a></li>
-                            <li><a href="#t-shirts-page">Футболки</a></li>
-                            <li><a href="#shoes-page">Обувь</a></li>
-                            <li><a href="#contacts-page">Контакты</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        
-        <div class="container">
-            <h2 class="section-title">Обувь</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt="Кроссовки 1">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Кроссовки спортивные</h3>
-                        <div class="product-price">5 999 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Кроссовки 2">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Кроссовки повседневные</h3>
-                        <div class="product-price">4 599 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Кеды">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Кеды классические</h3>
-                        <div class="product-price">3 899 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-img">
-                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Кроссовки 3">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Кроссовки беговые</h3>
-                        <div class="product-price">6 299 ₽</div>
-                        <div class="product-actions">
-                            <button class="add-to-cart">В корзину</button>
-                            <button class="wishlist">♥</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <footer>
-            <div class="container">
-                <div class="copyright">
-                    &copy; 2023 Urban Style. Все права защищены.
-                </div>
-            </div>
-        </footer>
-    </div>
-    
-    <!-- Страница контактов -->
-    <div id="contacts-page" class="page" style="display:none;">
-        <header>
-            <div class="container">
-                <div class="header-content">
-                    <div class="logo">Urban<span>Style</span></div>
-                    <nav>
-                        <ul>
-                            <li><a href="#home-page">Главная</a></li>
-                            <li><a href="#jeans-page">Джинсы</a></li>
-                            <li><a href="#t-shirts-page">Футболки</a></li>
-                            <li><a href="#shoes-page">Обувь</a></li>
-                            <li><a href="#contacts-page">Контакты</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        
-        <div class="contacts">
-            <div class="container">
-                <h2 class="section-title">Контакты</h2>
-                
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <h3>Наш адрес</h3>
-                        <p>г. Москва, ул. Тверская, д. 10</p>
-                        <p>ТЦ "Модный квартал", 3 этаж</p>
-                    </div>
-                    
-                    <div class="contact-card">
-                        <h3>Контактные данные</h3>
-                        <p>Телефон: <a href="tel:+78001234567">8 (800) 123-45-67</a></p>
-                        <p>Email: <a href="mailto:info@urbanstyle.com">info@urbanstyle.com</a></p>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h3>Обратная связь</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Ваше имя</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Сообщение</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Отправить</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        
-        <footer>
-            <div class="container">
-                <div class="copyright">
-                    &copy; 2023 Urban Style. Все права защищены.
-                </div>
-            </div>
-        </footer>
-    </div>
-    
-    <script>
-        // Простая навигация между страницами
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                
-                // Скрыть все страницы
-                document.querySelectorAll('.page').forEach(page => {
-                    page.style.display = 'none';
-                });
-                
-                // Показать целевую страницу
-                if (targetId === '#home-page') {
-                    document.getElementById('home-page').style.display = 'block';
-                } else {
-                    document.querySelector(targetId).style.display = 'block';
-                }
-                
-                // Прокрутить вверх
-                window.scrollTo(0, 0);
-            });
-        });
-        
-        // Инициализация - показать главную страницу
-        document.getElementById('home-page').style.display = 'block';
-    </script>
+    <ul id="taskList"></ul>
+  </div>
+
+  <script>
+    const taskInput = document.getElementById("taskInput");
+    const deadlineInput = document.getElementById("deadlineInput");
+    const addTaskBtn = document.getElementById("addTaskBtn");
+    const taskList = document.getElementById("taskList");
+
+    addTaskBtn.onclick = () => {
+      const taskText = taskInput.value.trim();
+      const deadline = deadlineInput.value;
+      if (taskText === '') return;
+
+      const li = document.createElement("li");
+      const taskBox = document.createElement("div");
+      taskBox.className = "task-left";
+      const taskTextNode = document.createElement("span");
+      taskTextNode.textContent = taskText;
+      const deadlineNode = document.createElement("small");
+      deadlineNode.textContent = deadline ? `Дедлайн: ${deadline}` : '';
+      taskBox.appendChild(taskTextNode);
+      taskBox.appendChild(deadlineNode);
+
+      const doneBtn = document.createElement("button");
+      doneBtn.textContent = "✔";
+      doneBtn.className = "done";
+      doneBtn.onclick = () => taskTextNode.classList.toggle("completed");
+
+      const delBtn = document.createElement("button");
+      delBtn.textContent = "✖";
+      delBtn.className = "delete";
+      delBtn.onclick = () => li.remove();
+
+      li.appendChild(taskBox);
+      li.appendChild(doneBtn);
+      li.appendChild(delBtn);
+
+      taskList.appendChild(li);
+
+      taskInput.value = '';
+      deadlineInput.value = '';
+    };
+  </script>
 </body>
 </html>
