@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Планирование</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    nav a { margin-right: 15px; }
+    ul { list-style: none; padding: 0; }
+    li { background: #eee; margin: 5px 0; padding: 10px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="tasks.html">Планирование</a>
+    <a href="calendar.html">Календарь</a>
+    <a href="notes.html">Заметки</a>
+    <a href="contacts.html">Контакты</a>
+  </nav>
+  <h2>Планирование задач</h2>
+  <input type="text" id="taskInput" placeholder="Введите задачу">
+  <input type="date" id="deadlineInput">
+  <button onclick="addTask()">Добавить</button>
+  <ul id="taskList"></ul>
+  <script>
+    function addTask() {
+      const taskText = document.getElementById("taskInput").value.trim();
+      const deadline = document.getElementById("deadlineInput").value;
+      if (!taskText) return;
+      const li = document.createElement("li");
+      li.textContent = taskText + (deadline ? ` (Дедлайн: ${deadline})` : '');
+      document.getElementById("taskList").appendChild(li);
+      document.getElementById("taskInput").value = '';
+      document.getElementById("deadlineInput").value = '';
+    }
+  </script>
+</body>
+</html>
